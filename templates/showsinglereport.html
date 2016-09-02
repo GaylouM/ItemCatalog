@@ -1,0 +1,134 @@
+<html>
+    
+    <head>
+	   <!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+        <!-- BOOTSTRAP -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <!-- CUSTOMIZED CSS -->
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/styles.css')}}">
+
+        <!-- CUSTOMIZED JQUERY -->
+        <script type=text/javascript src="{{url_for('static', filename='js/index.js')}}"></script>
+        <script type=text/javascript src="{{url_for('static', filename='js/report.js')}}"></script>
+
+        <!-- AUTOCOMPLETE INPUT - GOOGLE MAPS API -->
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
+    </head>
+
+    <body>
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="{{url_for('showAllReports')}}">Report Manager</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{url_for('showAllReports')}}"><span class="glyphicon glyphicon-file"></span> Reports</a></li>
+                        <li><a href="{{url_for('showAllFrames')}}"><span class="glyphicon glyphicon-unchecked"></span> Frames</a></li> 
+                    </ul>
+                    {% if user.username %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><img src="{{user.picture}}" alt="user" class="img-rounded pull-right" height="50"></li> 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{url_for('gdisconnect')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{url_for('showLogin')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    	
+    	<div class="container">
+            <div class="row">
+                <img src="{{userReportInfos.picture}}" alt="user" class="img-circle pull-right" height="100">
+                <br>
+                <h1 class="pull-right">{{userReportInfos.name}}&nbsp<h1/>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">CLIENT</h3>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Nom:</strong> {{report.client_lastname}}</p>
+                    <p><strong>Prénom:</strong> {{report.client_firstname}}</p>
+                    <p><strong>Adresse:</strong> {{report.client_full_adress}}</p>
+                    <p><strong>Téléphone:</strong> {{report.client_phone}}</p>
+                    <p><strong>Email:</strong> {{report.client_mail}}</p>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">EDITOR</h3>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Nom:</strong> {{report.editor_lastname}}</p>
+                    <p><strong>Prénom:</strong> {{report.editor_firstname}}</p>
+                    <p><strong>Adresse:</strong> {{report.editor_full_adress}}</p>
+                    <p><strong>Téléphone:</strong> {{report.editor_phone}}</p>
+                    <p><strong>Email:</strong> {{report.editor_mail}}</p>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">SITE</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Name:</strong> {{customised.site_name}}</p>
+                        <p><strong>Address:</strong> {{customised.site_full_adress}}</p>
+                        <p><strong>ERP type:</strong> {{customised.site_ERPtype}}</p>
+                        <p><strong>ERP category:</strong> {{customised.site_ERPcategory}}</p>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">REPORT</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Report id:</strong> {{customised.report_number}}</p>
+                        <p><strong>Visit date:</strong> {{customised.report_visitDate}}</p>
+                        <p><strong>Redaction date:</strong> {{customised.report_redactionDate}}</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% if user.username == userReportInfos.name %}
+                <form action= "{{url_for('editSingleReport', report_id = report_id)}}">
+        			<button type="submit" class="btn btn-primary btn-lg">Edit</button>
+                    <a type="button" class="btn btn-danger btn-lg" href="{{url_for('deleteSingleReport', report_id = report_id)}}">Delete</a>
+        			<a type="button" class="btn btn-default btn-lg" href="{{url_for('showAllReports')}}">Cancel</a>
+                </form>
+            {% else %} 
+                <a type="button" class="btn btn-default btn-lg" href="{{url_for('showAllReports')}}">Cancel</a>
+            {% endif %}
+        </div>
+        <br>
+        
+    </body>
+
+</html>

@@ -1,0 +1,315 @@
+<html>
+    
+    <head>
+        <!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+        <!-- BOOTSTRAP -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <!-- CUSTOMIZED CSS -->
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/styles.css')}}">
+
+        <!-- CUSTOMIZED JQUERY -->
+        <script type=text/javascript src="{{url_for('static', filename='js/index.js')}}"></script>
+        <script type=text/javascript src="{{url_for('static', filename='js/report.js')}}"></script>
+
+        <!-- AUTOCOMPLETE INPUT - GOOGLE MAPS API -->
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
+    </head>
+    
+    <body>
+
+        {% if user.username == userReportInfos.name %}
+    	
+    	<script type="text/javascript">  
+        	$(document).ready(function (){  
+
+            	$("#fulladdressFieldC").googleMapAutocompleteAddressC();
+                $("#fulladdressFieldE").googleMapAutocompleteAddressE();
+            	$("#fulladdressFieldS").googleMapAutocompleteAddressS();
+        		});
+        </script>
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="{{url_for('showAllReports')}}">Report Manager</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{url_for('showAllReports')}}"><span class="glyphicon glyphicon-file"></span> Reports</a></li>
+                        <li><a href="{{url_for('showAllFrames')}}"><span class="glyphicon glyphicon-unchecked"></span> Frames</a></li> 
+                    </ul>
+                    {% if user.username %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><img src="{{user.picture}}" alt="user" class="img-rounded pull-right" height="50"></li> 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{url_for('gdisconnect')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{url_for('showLogin')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>   
+
+    	<form autocomplete="off" action="{{url_for('editSingleReport', report_id = report_id)}}" method = 'post' enctype="multipart/form-data">
+            <div class="container">
+    			<fieldset>
+                    <legend><h1>Edit {{report.site_name}}</h1></legend>
+    				<p id="selectedFrame" hidden>{{frame_choice}}</p>
+    				<br>
+    				<br>
+    				<div id="result"></div>
+    				<div class="row" id="frame">
+                        <div class="show-report-informations col-lg-12" style="border-left: thick double #e6f2ff;">
+                            <fieldset>
+    							<legend id="test">Frame</legend>
+    							<label for="sel1">Select list (select one):</label>
+    							<select class="form-control" required name='frame' id="sel1">
+    								<option class="select-hr"> Customised </option>
+    								<option disabled>--------------------</option>
+    								{% for i in frames %}
+    									<option class="uncustomised" name="{{i.id}}">
+    										{{i.id}}
+    									</option>
+    								{% endfor %}
+    							</select>
+                            </fieldset>
+                        </div>
+                	</div>
+    				<br>
+    				<br>
+    				<br>
+                	<div class="row">
+                        <div class="show-report-informations col-lg-6" style="border-left: thick double #e5ffe5;">
+                            <fieldset id="client">
+                                <legend>Client's informations</legend>
+                                <fieldset class="form-group">
+                                    <label for="firstNameC">First name</label>
+                                    <input type="text" name="client_firstname" class="form-control" id="firstNameC" {% if customised.client_firstname == 'non available' %} placeholder="Enter first name" {% else %} placeholder="{{customised.client_firstname}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="lastNameC">Last name</label>
+                                    <input type="text" name="client_lastname" class="form-control" id="lastNameC" {% if customised.client_lastname == 'non available' %} placeholder="Enter last name" {% else %} placeholder="{{customised.client_lastname}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="fulladdressFieldC">Full address</label>
+                                    <input type="text" name="client_full_adress" class="form-control" id="fulladdressFieldC" {% if customised.client_full_adress == 'non available' %} placeholder="Indicate a place" {% else %} placeholder="{{customised.client_full_adress}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="street_number">Number</label>
+                                    <input type="text" name="client_adress_number" class="form-control" id="street_number">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="route">Street</label>
+                                    <input type="text" name="client_adress_street" class="form-control" id="route">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="postal_code">Postal code</label>
+                                    <input type="text" name="client_adress_postcode" class="form-control" id="postal_code">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="locality">City</label>
+                                    <input type="text" name="client_adress_city" class="form-control" id="locality">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="administrative_area_level_1">Region</label>
+                                    <input type="text" name="client_administrative_area" class="form-control" id="administrative_area_level_1">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="country">Country</label>
+                                    <input type="text" name="client_adress_country" class="form-control" id="country">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="phoneNumberC">Phone number</label>
+                                    <input type="text" name="client_phone" class="form-control" id="phoneNumberC" {% if customised.client_phone == 'non available' %} placeholder="Indicate a phone" {% else %} placeholder="{{customised.client_phone}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="emailC">Email address</label>
+                                    <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="email" name="client_mail" class="form-control" id="emailC" {% if customised.client_mail == 'non available' %} placeholder="Indicate a mail" {% else %} placeholder="{{customised.client_mail}}" {% endif %}>
+                                    </div>
+                                    <small class="text-muted">We'll never share your email with anyone else.</small>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                        <div class="show-report-informations col-lg-6 editor">
+                            <fieldset id="editor">
+                                <legend>Editor's informations</legend>
+                                <fieldset class="form-group">
+                                    <label for="firstNameE">First name</label>
+                                    <input type="text" name="editor_firstname" class="form-control" id="firstNameE" {% if customised.editor_firstname == 'non available' %} placeholder="Enter first name" {% else %} placeholder="{{customised.editor_firstname}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="lastNameE">Last name</label>
+                                    <input type="text" name="editor_lastname" class="form-control" id="lastNameE" {% if customised.editor_lastname == 'non available' %} placeholder="Enter last name" {% else %} placeholder="{{customised.editor_lastname}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="fulladdressFieldE">Full address</label>
+                                    <input type="text" name="editor_full_adress" class="form-control" id="fulladdressFieldE" {% if customised.editor_full_adress == 'non available' %} placeholder="Indicate a place" {% else %} placeholder="{{customised.editor_full_adress}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="street_number">Number</label>
+                                    <input type="text" name="editor_adress_number" class="form-control" id="street_number">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="route">Street</label>
+                                    <input type="text" name="editor_adress_street" class="form-control" id="route">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="postal_code">Postal code</label>
+                                    <input type="text" name="editor_adress_postcode" class="form-control" id="postal_code">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="locality">City</label>
+                                    <input type="text" name="editor_adress_city" class="form-control" id="locality">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="administrative_area_level_1">Region</label>
+                                    <input type="text" name="editor_administrative_area" class="form-control" id="administrative_area_level_1">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="country">Country</label>
+                                    <input type="text" name="editor_adress_country" class="form-control" id="country">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="phoneNumberE">Phone number</label>
+                                    <input type="text" name="editor_phone" class="form-control" id="phoneNumberE" {% if customised.editor_phone == 'non available' %} placeholder="Indicate a phone" {% else %} placeholder="{{customised.editor_phone}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="emailE">Email address</label>
+                                    <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="email" name="editor_mail" class="form-control" id="emailE" {% if customised.editor_mail == 'non available' %} placeholder="Indicate a mail" {% else %} placeholder="{{customised.editor_mail}}" {% endif %}>
+                                    </div>
+                                    <small class="text-muted">We'll never share your email with anyone else.</small>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                	</div>
+    				<br>
+    				<br>
+                	<br>
+    				<div class="row">
+                        <div class="show-report-informations col-lg-6" style="border-left: thick double #ffece5">
+                            <fieldset>
+                                <legend>Site's informations</legend>
+                                <fieldset class="form-group">
+                                    <label for="siteName">Site name</label>
+                                    <input type="text" name="site_name" class="form-control" id="siteName" {% if customised.site_name == 'non available' %} placeholder="Enter the site name name" {% else %} placeholder="{{customised.site_name}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="fulladdressFieldS">Full address</label>
+                                    <input type="text" name="site_full_adress" class="form-control" id="fulladdressFieldS" {% if customised.site_full_adress == 'non available' %} placeholder="Indicate a place" {% else %} placeholder="{{customised.site_full_adress}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="street_number">Number</label>
+                                    <input type="text" name="site_adress_number" class="form-control" id="street_number">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="route">Street</label>
+                                    <input type="text" name="site_adress_street" class="form-control" id="route">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="postal_code">Postal code</label>
+                                    <input type="text" name="site_adress_postcode" class="form-control" id="postal_code">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="locality">City</label>
+                                    <input type="text" name="site_adress_city" class="form-control" id="locality">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="administrative_area_level_1">Region</label>
+                                    <input type="text" name="site_administrative_area" class="form-control" id="administrative_area_level_1">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="country">Country</label>
+                                    <input type="text" name="site_adress_country" class="form-control" id="country">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="ERPCategory">ERP category</label>
+                                    <input type="number" min="1" max="5" name="site_ERPcategory" class="form-control" id="ERPCategory" {% if customised.site_ERPcategory == 'non available' %} placeholder="Indicate the ERP category" {% else %} placeholder="{{customised.site_ERPcategory}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="ERPType">ERP type</label>
+                                    <input type="text" name="site_ERPtype" class="form-control" id="ERPType" {% if customised.site_ERPtype == 'non available' %} placeholder="Indicate the ERP type" {% else %} placeholder="{{customised.site_ERPtype}}" {% endif %}>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                        <div class="show-report-informations col-lg-6">
+                            <fieldset>
+                                <legend>Report's informations</legend>
+                                <fieldset class="form-group">
+                                    <label for="reportNumber">Report id</label>
+                                    <input type="text" name="report_number" class="form-control" id="reportNumber" {% if customised.report_number == 'non available' %} placeholder="Enter the report id" {% else %} placeholder="{{customised.report_number}}" {% endif %}>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="visitDate">Visit date</label>
+                                    <input type="date" name="report_visitDate" class="form-control" id="visitDate" value="{{customised.report_visitDate}}">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="redactionDate">Redaction date</label>
+                                    <input type="date" name="report_redactionDate" class="form-control" id="redactionDate" value="{{customised.report_redactionDate}}">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="picture">Picture</label>
+                                    <input type="file" name="file[]" id="picture">
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                	</div>
+    			</fieldset>
+                <br>
+                <br>
+    			<small class="text-muted" style="margin-left=20px">* Required</small>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg">Save changes</button>
+    			<a type="button" class="btn btn-default btn-lg" href="{{url_for('showSingleReport', report_id = report_id)}}">Cancel</a>
+            </div>
+        </form>
+
+        {% else %}
+
+            <div class="container">
+                
+                <br/>
+                <br/>
+                
+                <div class="center-block" style="max-width:400px">
+                    <form action="{{url_for('showLogin')}}" method = 'get'>
+                        <h1 class="center-block">Unauthorized action</h1>
+                        <hr>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">GO TO LOGIN PAGE</button>
+                    </form>
+                </div>
+                
+                <br/>
+                <br/>
+
+            <div/>
+
+        {% endif %}
+
+    </body>
+</html>

@@ -1,0 +1,188 @@
+<html>
+    
+    <head>
+        <!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+        <!-- BOOTSTRAP -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <!-- CUSTOMIZED CSS -->
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/styles.css')}}">
+
+        <!-- CUSTOMIZED JQUERY -->
+        <script type=text/javascript src="{{url_for('static', filename='js/index.js')}}"></script>
+        <script type=text/javascript src="{{url_for('static', filename='js/report.js')}}"></script>
+
+        <!-- AUTOCOMPLETE INPUT - GOOGLE MAPS API -->
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
+    </head>
+    
+    <body>
+        
+    <script type="text/javascript">  
+    $(function (){  
+      
+        $("#fulladdressFieldC").googleMapAutocompleteAddressC();
+        $("#fulladdressFieldE").googleMapAutocompleteAddressE();
+        
+    });  
+      
+    </script>
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="{{url_for('showAllReports')}}">Report Manager</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{url_for('showAllReports')}}"><span class="glyphicon glyphicon-file"></span> Reports</a></li>
+                        <li><a href="{{url_for('showAllFrames')}}"><span class="glyphicon glyphicon-unchecked"></span> Frames</a></li> 
+                    </ul>
+                    {% if user.username %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><img src="{{user.picture}}" alt="user" class="img-rounded pull-right" height="50"></li> 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{url_for('gdisconnect')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{url_for('showLogin')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        
+        <form autocomplete="off" action="{{url_for('newSingleFrame')}}" method = 'post'>
+            <div class="container">
+                <div class="row">
+                    <fieldset>
+                        <legend><h1>Create Frame</h1></legend>
+                        <div class="show-report-informations col-lg-6" style="border-left: thick double #e5ffe5;">
+                            <fieldset>
+                                <legend>Client's informations</legend>
+                                <fieldset class="form-group">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" name="client_firstname" class="form-control" id="firstName" placeholder="Enter first name">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" name="client_lastname" class="form-control" id="lastName" placeholder="Enter last name">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="fulladdressFieldC">Full address</label>
+                                    <input type="text" name="client_full_adress" class="form-control" id="fulladdressFieldC" placeholder="Indicate a place">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="street_number">Number</label>
+                                    <input type="text" name="client_adress_number" class="form-control" id="street_number">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="route">Street</label>
+                                    <input type="text" name="client_adress_street" class="form-control" id="route">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="postal_code">Postal code</label>
+                                    <input type="text" name="client_adress_postcode" class="form-control" id="postal_code">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="locality">City</label>
+                                    <input type="text" name="client_adress_city" class="form-control" id="locality">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="administrative_area_level_1">Region</label>
+                                    <input type="text" name="client_administrative_area" class="form-control" id="administrative_area_level_1">
+                                </fieldset>
+                                <fieldset class="form-group" hidden>
+                                    <label for="country">Country</label>
+                                    <input type="text" name="client_adress_country" class="form-control" id="country">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="phone_number">Phone number</label>
+                                    <input type="text" name="client_phone" class="form-control" id="phone_number" placeholder="Indicate a phone">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" name="client_mail" class="form-control" id="email" placeholder="Indicate an email">
+                                    <small class="text-muted">We'll never share your email with anyone else.</small>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                        <div class="show-report-informations col-lg-6">
+                            <fieldset>
+                                <legend>Editor's informations</legend>
+                                <fieldset class="form-group">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" name="editor_firstname" class="form-control" id="firstName" placeholder="Enter first name">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" name="editor_lastname" class="form-control" id="lastName" placeholder="Enter last name">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="fulladdressFieldE">Full address</label>
+                                    <input type="text" name="editor_full_adress" class="form-control" id="fulladdressFieldE" placeholder="Indicate a place">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="street_number">Number</label>
+                                    <input type="text" name="editor_adress_number" class="form-control" id="street_number">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="route">Street</label>
+                                    <input type="text" name="editor_adress_street" class="form-control" id="route">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="postal_code">Postal code</label>
+                                    <input type="text" name="editor_adress_postcode" class="form-control" id="postal_code">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="locality">City</label>
+                                    <input type="text" name="editor_adress_city" class="form-control" id="locality">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="administrative_area_level_1">Region</label>
+                                    <input type="text" name="editor_administrative_area" class="form-control" id="administrative_area_level_1">
+                                </fieldset>
+                                <fieldset class="form-group"  hidden>
+                                    <label for="country">Country</label>
+                                    <input type="text" name="editor_adress_country" class="form-control" id="country">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="phone_number">Phone number</label>
+                                    <input type="text" name="editor_phone" class="form-control" id="phone_number" placeholder="Indicate a phone">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" name="editor_mail" class="form-control" id="email" placeholder="Indicate an email">
+                                    <small class="text-muted">We'll never share your email with anyone else.</small>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                    </fieldset>
+                </div>
+                <small class="text-muted" style="margin-left=20px">* Required</small>
+                <br/>
+                <br/>
+    			<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    			<a type="button" class="btn btn-default btn-lg" href="{{url_for('showAllFrames')}}">Cancel</a>
+            </div>
+        </form>
+
+    </body>
+</html>

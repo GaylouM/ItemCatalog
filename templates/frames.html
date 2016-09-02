@@ -1,0 +1,106 @@
+<html>
+
+	<head>
+        <!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+		<!-- BOOTSTRAP -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+		<!-- CUSTOMIZED CSS -->
+		<link rel=stylesheet type=text/css href="{{url_for('static', filename='css/styles.css')}}">
+
+		<!-- CUSTOMIZED JQUERY -->
+		<script type=text/javascript src="{{url_for('static', filename='js/index.js')}}"></script>
+		<script type=text/javascript src="{{url_for('static', filename='js/report.js')}}"></script>
+
+		<!-- AUTOCOMPLETE INPUT - GOOGLE MAPS API -->
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
+    </head>
+
+<body>
+
+	<script type=text/javascript>    
+		$(document).ready(function() {
+			$("#flash").delay(100).slideDown("slow").delay(2000).slideUp("slow");
+		});
+	</script>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+                <a class="navbar-brand" href="{{url_for('showAllReports')}}">Report Manager</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url_for('showAllReports')}}"><span class="glyphicon glyphicon-file"></span> Reports</a></li>
+                    <li class="active"><a href="{{url_for('showAllFrames')}}"><span class="glyphicon glyphicon-unchecked"></span> Frames</a></li> 
+                </ul>
+                {% if user.username %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><img src="{{user.picture}}" alt="user" class="img-rounded pull-right" height="50"></li> 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url_for('gdisconnect')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url_for('showLogin')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+
+		{% for message in messages %}
+			<div class="center-block" id="flash-container" style="width:1500px">
+				<div class="alert alert-success" id="flash" role="alert" hidden>{{message}}</div>
+			</div>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+    
+	<div class="container">
+		
+		<br/>
+		<br/>
+	
+		<div class="center-block" style="max-width:400px">
+			<form action="{{url_for('newSingleFrame')}}">
+    			<button type="submit" class="btn btn-primary btn-lg btn-block">ADD A FRAME</button>
+			</form>
+		</div>
+		
+		<br/>
+		<br/>
+    
+		{% for i in frames %}
+
+			<a href="{{url_for('showSingleFrame', frame_id = i.id)}}">
+			<div class="col-md-12 col-lg-12 tile text-center">
+				<h2>Frame {{i.id}}</h2>
+			</div>
+			</a>
+
+		{% endfor %}
+    
+	</div>
+		
+</body>
+</html>

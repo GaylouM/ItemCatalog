@@ -1,0 +1,164 @@
+<html>
+    
+    <head>
+    	<!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+		<!-- BOOTSTRAP -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+		<!-- CUSTOMIZED CSS -->
+		<link rel=stylesheet type=text/css href="{{url_for('static', filename='css/styles.css')}}">
+
+		<!-- CUSTOMIZED JQUERY -->
+		<script type=text/javascript src="{{url_for('static', filename='js/index.js')}}"></script>
+        <script type=text/javascript src="{{url_for('static', filename='js/report.js')}}"></script>
+
+		<!-- AUTOCOMPLETE INPUT - GOOGLE MAPS API -->
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
+    </head>
+    
+	<body>
+
+		<script type=text/javascript>    
+			$(window).load(function() {
+				$(".se-pre-con").fadeOut("slow");
+				$("#flash").delay(1000).slideDown("slow").delay(2000).slideUp("slow");
+			});
+
+		</script>
+
+		<div class="se-pre-con"></div>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span> 
+					</button>
+					<a class="navbar-brand" href="{{url_for('showAllReports')}}">Report Manager</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="{{url_for('showAllReports')}}"><span class="glyphicon glyphicon-file"></span> Reports</a></li>
+						<li><a href="{{url_for('showAllFrames')}}"><span class="glyphicon glyphicon-unchecked"></span> Frames</a></li> 
+					</ul>
+					{% if user.username %}
+					<ul class="nav navbar-nav navbar-right">
+						<li><img src="{{user.picture}}" alt="user" class="img-rounded pull-right" height="50"></li> 
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{{url_for('gdisconnect')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					</ul>
+					{% else %}
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{{url_for('showLogin')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+
+		{% for message in messages %}
+			<div class="center-block" id="flash-container" style="width:1500px">
+				<div class="alert alert-success" id="flash" role="alert" hidden>{{message}}</div>
+			</div>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+
+		<div class="container">
+			
+			<br>
+			<br>
+			
+			<div class="center-block" style="max-width:400px">
+				<form action="{{url_for('newSingleReport')}}" method = 'get'>
+    				<button type="submit" class="btn btn-primary btn-lg btn-block">ADD A REPORT</button>
+				</form>
+			</div>
+			
+			<br>
+			<br>
+
+			{% for i in reports %}
+
+				{% if i.frame_choice == 0 %}
+
+					{% if i.report_pictureOrientation == 'Rotated 90 CCW' %}
+						<a href="{{url_for('showSingleReport', report_id = i.id)}}">
+						<div class="center-block" style="max-width:350px">
+							<div class="col-md-6 col-lg-4 text-center">
+								<div class="row tile" style="width=200px"><img class="rotate270" src="{{ url_for('static', filename='uploads/%s' % i.report_picture) }}" width="350"></div>
+								<h2>{{i.id}} - {{i.site_name}}</h2>
+								<h3>Editor's name : {{i.editor_firstname}}</h3>
+								<h4>Visit date : {{i.report_visitDate}}</h4>
+							</div>
+						</div>
+						</a>
+
+					{% elif i.report_pictureOrientation == 'Rotated 90 CW' %}
+
+						<a href="{{url_for('showSingleReport', report_id = i.id)}}">
+							<div class="col-md-6 col-lg-4 text-center">
+							<div class="center-block tile" style="max-width:350px">
+								<div class="row row-tile" style="height=200px;max-width=100%;overflow:hidden;"><img class="rotate90" src="{{ url_for('static', filename='uploads/%s' % i.report_picture) }}" width="350" height="200"></div>
+								<h2>{{i.id}} - {{i.site_name}}</h2>
+								<h3>Editor's name : {{i.editor_firstname}}</h3>
+								<h4>Visit date : {{i.report_visitDate}}</h4>
+							</div>
+						</div>
+						</a>
+
+					{% else %}
+
+						<a href="{{url_for('showSingleReport', report_id = i.id)}}">
+						
+							<div class="col-md-6 col-lg-4 text-center">
+							<div class="center-block tile" style="max-width:350px">
+								<img src="{{ url_for('static', filename='uploads/%s' % i.report_picture) }}" width="350" height="200">
+								<h2>{{i.id}} - {{i.site_name}}</h2>
+								<h3>Editor's name : {{i.editor_firstname}}</h3>
+								<h4>Visit date : {{i.report_visitDate}}</h4>
+							</div>
+						</div>
+						</a>	
+
+					{% endif %}
+
+				{% else %}
+
+					<a href="{{url_for('showSingleReport', report_id = i.id)}}">
+					
+						<div class="col-md-6 col-lg-4 text-center">
+						<div class="center-block tile" style="max-width:350px">
+							<img src="{{ url_for('static', filename='uploads/%s' % i.report_picture) }}" width="350" height="200">
+							<h2>{{i.id}} - {{i.site_name}}</h2>
+							<h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+							<h4>Visit date : {{i.report_visitDate}}</h4>
+						</div>
+					</div>
+					</a>
+
+				{% endif %}
+
+			{% endfor %}
+
+		</div>
+
+	</body>
+
+</html>
