@@ -1,12 +1,11 @@
 import os
-import sys
 import exifread
 from functools import wraps
 from flask import Flask, render_template, request, redirect
-from flask import jsonify, url_for, flash, send_from_directory
+from flask import jsonify, url_for, flash
 from database_setup import Base, User, Frame, Report
 from werkzeug import secure_filename
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from flask import session as login_session
 import random
@@ -19,7 +18,7 @@ import json
 from flask import make_response
 import requests
 
-app = Flask(__name__)
+from myapp import app
 
 # This is the path to the upload directory
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -179,10 +178,11 @@ def gdisconnect():
         print 'Access Token is None'
         response = make_response(
             json.dumps('Current user not connected.'), 401
-            )
+        )
         response.headers['Content-Type'] = 'application/json'
         return response
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % login_session['access_token']
+    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % login_session[
+        'access_token']
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     print 'result is '
@@ -201,7 +201,7 @@ def gdisconnect():
     else:
         response = make_response(
             json.dumps('Failed to revoke token for given user.', 400)
-            )
+        )
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -698,7 +698,7 @@ def editSingleReport(report_id):
                                customised=editedReport,
                                user=login_session,
                                userReportInfos=getUserInfo(
-                                editedReport.user_id))
+                                   editedReport.user_id))
     else:
         return render_template('editsinglereport.html',
                                report=editedReport,
@@ -708,7 +708,7 @@ def editSingleReport(report_id):
                                customised=editedReport,
                                user=login_session,
                                userReportInfos=getUserInfo(
-                                editedReport.user_id))
+                                   editedReport.user_id))
 
 
 @app.route('/reports/<int:report_id>/delete', methods=['GET', 'POST'])
@@ -733,10 +733,10 @@ def deleteSingleReport(report_id):
 #--------------------------------------------------------
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    app.secret_key = 'super_secret_key'
-    app.run(host='0.0.0.0', port=5000)
+#     app.secret_key = 'super_secret_key'
+#     app.run(host='0.0.0.0', port=5000)
 
 #--------------------------------------------------------
 #--------------------End of app--------------------------
