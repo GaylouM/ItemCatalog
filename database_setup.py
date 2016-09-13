@@ -133,9 +133,7 @@ class Report(Base):
             'report_pictureOrientation': self.report_pictureOrientation,
         }
 
-#engine = create_engine('sqlite:///affairreport.db')
-
-engine = create_engine('sqlite:///affairreportwithusers.db')
+engine = create_engine('sqlite:///var/www/ItemCatalog/affairreportwithusers.db')
 
 
 Base.metadata.create_all(engine)

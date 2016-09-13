@@ -22,7 +22,7 @@ import requests
 app = Flask(__name__)
 
 # This is the path to the upload directory
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = '/var/www/ItemCatalog/static/uploads'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(
     ['png', 'jpg', 'JPG', 'jpeg'])
@@ -35,10 +35,10 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open('var/www/ItemCatalog/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Report creator"
 
-engine = create_engine('sqlite:///affairreportwithusers.db')
+engine = create_engine('sqlite:///var/www/ItemCatalog/affairreportwithusers.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -93,7 +93,7 @@ def gconnect():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets('var/www/ItemCatalog/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
