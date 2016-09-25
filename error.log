@@ -1467,3 +1467,282 @@
 [Sun Sep 25 14:36:45.845124 2016] [:error] [pid 5734:tid 139761859655424] [client 88.190.58.150:54587]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
 [Sun Sep 25 14:36:45.845133 2016] [:error] [pid 5734:tid 139761859655424] [client 88.190.58.150:54587]     return getattr(obj, attribute), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
 [Sun Sep 25 14:36:45.845145 2016] [:error] [pid 5734:tid 139761859655424] [client 88.190.58.150:54587] UndefinedError: sqlalchemy.orm.query.Query object has no element 1, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:39:52.177818 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623] mod_wsgi (pid=5733): Exception occurred processing WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:39:52.177856 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623] Traceback (most recent call last):
+[Sun Sep 25 14:39:52.177869 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sun Sep 25 14:39:52.178179 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     return self.wsgi_app(environ, start_response)
+[Sun Sep 25 14:39:52.178190 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sun Sep 25 14:39:52.178203 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     response = self.make_response(self.handle_exception(e))
+[Sun Sep 25 14:39:52.178222 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sun Sep 25 14:39:52.178231 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:39:52.178236 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sun Sep 25 14:39:52.178242 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     response = self.full_dispatch_request()
+[Sun Sep 25 14:39:52.178246 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sun Sep 25 14:39:52.178252 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     rv = self.handle_user_exception(e)
+[Sun Sep 25 14:39:52.178256 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sun Sep 25 14:39:52.178262 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:39:52.178266 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sun Sep 25 14:39:52.178272 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     rv = self.dispatch_request()
+[Sun Sep 25 14:39:52.178276 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sun Sep 25 14:39:52.178282 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sun Sep 25 14:39:52.178288 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/var/www/ItemCatalog/finalProject.py", line 407, in showAllReports
+[Sun Sep 25 14:39:52.178435 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     customised=reports)
+[Sun Sep 25 14:39:52.178446 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+[Sun Sep 25 14:39:52.178514 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     context, ctx.app)
+[Sun Sep 25 14:39:52.178522 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+[Sun Sep 25 14:39:52.178531 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     rv = template.render(context)
+[Sun Sep 25 14:39:52.178536 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+[Sun Sep 25 14:39:52.178757 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     return self.environment.handle_exception(exc_info, True)
+[Sun Sep 25 14:39:52.178766 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+[Sun Sep 25 14:39:52.178776 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:39:52.178794 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/var/www/ItemCatalog/templates/reports.html", line 150, in top-level template code
+[Sun Sep 25 14:39:52.178838 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     <h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+[Sun Sep 25 14:39:52.178852 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr
+[Sun Sep 25 14:39:52.178861 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623]     return getattr(obj, attribute)
+[Sun Sep 25 14:39:52.178873 2016] [:error] [pid 5733:tid 139761876440832] [client 88.190.58.150:54623] UndefinedError: sqlalchemy.orm.query.Query object has no element 1
+[Sun Sep 25 14:40:00.088746 2016] [mpm_event:notice] [pid 5730:tid 139762106492800] AH00491: caught SIGTERM, shutting down
+[Sun Sep 25 14:40:01.077356 2016] [mpm_event:notice] [pid 5869:tid 140297979770752] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Sun Sep 25 14:40:01.077440 2016] [core:notice] [pid 5869:tid 140297979770752] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Sep 25 14:40:02.500258 2016] [:info] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626] mod_wsgi (pid=5872, process='', application='ec2-52-57-15-38.eu-central-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:02.750018 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626] mod_wsgi (pid=5872): Exception occurred processing WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:02.750054 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626] Traceback (most recent call last):
+[Sun Sep 25 14:40:02.750066 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sun Sep 25 14:40:02.750385 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     return self.wsgi_app(environ, start_response)
+[Sun Sep 25 14:40:02.750397 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sun Sep 25 14:40:02.750411 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     response = self.make_response(self.handle_exception(e))
+[Sun Sep 25 14:40:02.750416 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sun Sep 25 14:40:02.750425 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:02.750429 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sun Sep 25 14:40:02.750436 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     response = self.full_dispatch_request()
+[Sun Sep 25 14:40:02.750441 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sun Sep 25 14:40:02.750448 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     rv = self.handle_user_exception(e)
+[Sun Sep 25 14:40:02.750453 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sun Sep 25 14:40:02.750460 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:02.750464 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sun Sep 25 14:40:02.750471 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     rv = self.dispatch_request()
+[Sun Sep 25 14:40:02.750476 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sun Sep 25 14:40:02.750494 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sun Sep 25 14:40:02.750502 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/var/www/ItemCatalog/finalProject.py", line 407, in showAllReports
+[Sun Sep 25 14:40:02.750652 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     customised=reports)
+[Sun Sep 25 14:40:02.750662 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+[Sun Sep 25 14:40:02.750710 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     context, ctx.app)
+[Sun Sep 25 14:40:02.750718 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+[Sun Sep 25 14:40:02.750727 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     rv = template.render(context)
+[Sun Sep 25 14:40:02.750732 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+[Sun Sep 25 14:40:02.750957 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     return self.environment.handle_exception(exc_info, True)
+[Sun Sep 25 14:40:02.750967 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+[Sun Sep 25 14:40:02.750977 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:02.750982 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/var/www/ItemCatalog/templates/reports.html", line 150, in top-level template code
+[Sun Sep 25 14:40:02.751037 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     <h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+[Sun Sep 25 14:40:02.751047 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr
+[Sun Sep 25 14:40:02.751056 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626]     return getattr(obj, attribute)
+[Sun Sep 25 14:40:02.751071 2016] [:error] [pid 5872:tid 140297765897984] [client 88.190.58.150:54626] UndefinedError: sqlalchemy.orm.query.Query object has no element 1
+[Sun Sep 25 14:40:05.398384 2016] [:info] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629] mod_wsgi (pid=5873, process='', application='ec2-52-57-15-38.eu-central-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:05.649458 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629] mod_wsgi (pid=5873): Exception occurred processing WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:05.649507 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629] Traceback (most recent call last):
+[Sun Sep 25 14:40:05.649523 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sun Sep 25 14:40:05.649837 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     return self.wsgi_app(environ, start_response)
+[Sun Sep 25 14:40:05.649849 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sun Sep 25 14:40:05.649862 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     response = self.make_response(self.handle_exception(e))
+[Sun Sep 25 14:40:05.649868 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sun Sep 25 14:40:05.649886 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:05.649891 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sun Sep 25 14:40:05.649910 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     response = self.full_dispatch_request()
+[Sun Sep 25 14:40:05.649915 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sun Sep 25 14:40:05.649921 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     rv = self.handle_user_exception(e)
+[Sun Sep 25 14:40:05.649925 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sun Sep 25 14:40:05.649932 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:05.649936 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sun Sep 25 14:40:05.649942 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     rv = self.dispatch_request()
+[Sun Sep 25 14:40:05.649947 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sun Sep 25 14:40:05.649953 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sun Sep 25 14:40:05.649960 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/var/www/ItemCatalog/finalProject.py", line 407, in showAllReports
+[Sun Sep 25 14:40:05.650104 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     customised=reports)
+[Sun Sep 25 14:40:05.650114 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+[Sun Sep 25 14:40:05.650160 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     context, ctx.app)
+[Sun Sep 25 14:40:05.650168 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+[Sun Sep 25 14:40:05.650177 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     rv = template.render(context)
+[Sun Sep 25 14:40:05.650182 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+[Sun Sep 25 14:40:05.650416 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     return self.environment.handle_exception(exc_info, True)
+[Sun Sep 25 14:40:05.650426 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+[Sun Sep 25 14:40:05.650436 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:05.650441 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/var/www/ItemCatalog/templates/reports.html", line 150, in top-level template code
+[Sun Sep 25 14:40:05.650496 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     <h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+[Sun Sep 25 14:40:05.650506 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr
+[Sun Sep 25 14:40:05.650515 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629]     return getattr(obj, attribute)
+[Sun Sep 25 14:40:05.650534 2016] [:error] [pid 5873:tid 140297878050560] [client 88.190.58.150:54629] UndefinedError: sqlalchemy.orm.query.Query object has no element 1
+[Sun Sep 25 14:40:06.434992 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630] mod_wsgi (pid=5872): Exception occurred processing WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:06.435028 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630] Traceback (most recent call last):
+[Sun Sep 25 14:40:06.435039 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sun Sep 25 14:40:06.435058 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     return self.wsgi_app(environ, start_response)
+[Sun Sep 25 14:40:06.435064 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sun Sep 25 14:40:06.435073 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     response = self.make_response(self.handle_exception(e))
+[Sun Sep 25 14:40:06.435079 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sun Sep 25 14:40:06.435086 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:06.435091 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sun Sep 25 14:40:06.435098 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     response = self.full_dispatch_request()
+[Sun Sep 25 14:40:06.435103 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sun Sep 25 14:40:06.435109 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     rv = self.handle_user_exception(e)
+[Sun Sep 25 14:40:06.435114 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sun Sep 25 14:40:06.435121 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:06.435125 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sun Sep 25 14:40:06.435132 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     rv = self.dispatch_request()
+[Sun Sep 25 14:40:06.435148 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sun Sep 25 14:40:06.435155 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sun Sep 25 14:40:06.435160 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/var/www/ItemCatalog/finalProject.py", line 407, in showAllReports
+[Sun Sep 25 14:40:06.435182 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     customised=reports)
+[Sun Sep 25 14:40:06.435190 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+[Sun Sep 25 14:40:06.435199 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     context, ctx.app)
+[Sun Sep 25 14:40:06.435204 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+[Sun Sep 25 14:40:06.435234 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     rv = template.render(context)
+[Sun Sep 25 14:40:06.435240 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+[Sun Sep 25 14:40:06.435247 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     return self.environment.handle_exception(exc_info, True)
+[Sun Sep 25 14:40:06.435251 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+[Sun Sep 25 14:40:06.435257 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:06.435261 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/var/www/ItemCatalog/templates/reports.html", line 150, in top-level template code
+[Sun Sep 25 14:40:06.435267 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     <h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+[Sun Sep 25 14:40:06.435272 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr
+[Sun Sep 25 14:40:06.435278 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630]     return getattr(obj, attribute)
+[Sun Sep 25 14:40:06.435290 2016] [:error] [pid 5872:tid 140297757505280] [client 88.190.58.150:54630] UndefinedError: sqlalchemy.orm.query.Query object has no element 1
+[Sun Sep 25 14:40:11.301650 2016] [mpm_event:notice] [pid 5869:tid 140297979770752] AH00491: caught SIGTERM, shutting down
+[Sun Sep 25 14:40:12.289939 2016] [mpm_event:notice] [pid 5982:tid 140283267127168] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Sun Sep 25 14:40:12.290013 2016] [core:notice] [pid 5982:tid 140283267127168] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Sep 25 14:40:16.987020 2016] [:info] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634] mod_wsgi (pid=5985, process='', application='ec2-52-57-15-38.eu-central-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:17.239531 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634] mod_wsgi (pid=5985): Exception occurred processing WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:17.239570 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634] Traceback (most recent call last):
+[Sun Sep 25 14:40:17.239582 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sun Sep 25 14:40:17.239900 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     return self.wsgi_app(environ, start_response)
+[Sun Sep 25 14:40:17.239911 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sun Sep 25 14:40:17.239925 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     response = self.make_response(self.handle_exception(e))
+[Sun Sep 25 14:40:17.239930 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sun Sep 25 14:40:17.239938 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:17.239943 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sun Sep 25 14:40:17.239950 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     response = self.full_dispatch_request()
+[Sun Sep 25 14:40:17.239955 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sun Sep 25 14:40:17.239972 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     rv = self.handle_user_exception(e)
+[Sun Sep 25 14:40:17.239977 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sun Sep 25 14:40:17.239984 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:17.239988 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sun Sep 25 14:40:17.239995 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     rv = self.dispatch_request()
+[Sun Sep 25 14:40:17.239999 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sun Sep 25 14:40:17.240006 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sun Sep 25 14:40:17.240025 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/var/www/ItemCatalog/finalProject.py", line 407, in showAllReports
+[Sun Sep 25 14:40:17.240183 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     customised=reports)
+[Sun Sep 25 14:40:17.240192 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+[Sun Sep 25 14:40:17.240234 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     context, ctx.app)
+[Sun Sep 25 14:40:17.240241 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+[Sun Sep 25 14:40:17.240250 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     rv = template.render(context)
+[Sun Sep 25 14:40:17.240254 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+[Sun Sep 25 14:40:17.240477 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     return self.environment.handle_exception(exc_info, True)
+[Sun Sep 25 14:40:17.240486 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+[Sun Sep 25 14:40:17.240497 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:17.240502 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/var/www/ItemCatalog/templates/reports.html", line 150, in top-level template code
+[Sun Sep 25 14:40:17.240553 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     <h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+[Sun Sep 25 14:40:17.240562 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr
+[Sun Sep 25 14:40:17.240571 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634]     return getattr(obj, attribute)
+[Sun Sep 25 14:40:17.240585 2016] [:error] [pid 5985:tid 140283052271360] [client 88.190.58.150:54634] UndefinedError: sqlalchemy.orm.query.Query object has no element 1
+[Sun Sep 25 14:40:18.728359 2016] [:info] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635] mod_wsgi (pid=5986, process='', application='ec2-52-57-15-38.eu-central-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:18.978830 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635] mod_wsgi (pid=5986): Exception occurred processing WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:40:18.978874 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635] Traceback (most recent call last):
+[Sun Sep 25 14:40:18.978886 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sun Sep 25 14:40:18.979213 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     return self.wsgi_app(environ, start_response)
+[Sun Sep 25 14:40:18.979226 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sun Sep 25 14:40:18.979240 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     response = self.make_response(self.handle_exception(e))
+[Sun Sep 25 14:40:18.979245 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sun Sep 25 14:40:18.979252 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:18.979256 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sun Sep 25 14:40:18.979262 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     response = self.full_dispatch_request()
+[Sun Sep 25 14:40:18.979267 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sun Sep 25 14:40:18.979273 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     rv = self.handle_user_exception(e)
+[Sun Sep 25 14:40:18.979277 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sun Sep 25 14:40:18.979283 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:18.979287 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sun Sep 25 14:40:18.979293 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     rv = self.dispatch_request()
+[Sun Sep 25 14:40:18.979297 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sun Sep 25 14:40:18.979303 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sun Sep 25 14:40:18.979309 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/var/www/ItemCatalog/finalProject.py", line 407, in showAllReports
+[Sun Sep 25 14:40:18.979465 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     customised=reports)
+[Sun Sep 25 14:40:18.979475 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+[Sun Sep 25 14:40:18.979522 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     context, ctx.app)
+[Sun Sep 25 14:40:18.979529 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+[Sun Sep 25 14:40:18.979538 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     rv = template.render(context)
+[Sun Sep 25 14:40:18.979543 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+[Sun Sep 25 14:40:18.979793 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     return self.environment.handle_exception(exc_info, True)
+[Sun Sep 25 14:40:18.979803 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+[Sun Sep 25 14:40:18.979813 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     reraise(exc_type, exc_value, tb)
+[Sun Sep 25 14:40:18.979818 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/var/www/ItemCatalog/templates/reports.html", line 150, in top-level template code
+[Sun Sep 25 14:40:18.979871 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     <h3>Editor's name : {{frames[(i.frame_choice)-1].editor_firstname}}</h3>
+[Sun Sep 25 14:40:18.979881 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]   File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 397, in getattr
+[Sun Sep 25 14:40:18.979889 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635]     return getattr(obj, attribute)
+[Sun Sep 25 14:40:18.979904 2016] [:error] [pid 5986:tid 140283069056768] [client 88.190.58.150:54635] UndefinedError: sqlalchemy.orm.query.Query object has no element 1
+[Sun Sep 25 14:41:59.910306 2016] [core:warn] [pid 5982:tid 140283267127168] AH00045: child process 5986 still did not exit, sending a SIGTERM
+[Sun Sep 25 14:42:01.912563 2016] [core:warn] [pid 5982:tid 140283267127168] AH00045: child process 5986 still did not exit, sending a SIGTERM
+[Sun Sep 25 14:42:03.915879 2016] [core:warn] [pid 5982:tid 140283267127168] AH00045: child process 5986 still did not exit, sending a SIGTERM
+[Sun Sep 25 14:42:05.918151 2016] [core:error] [pid 5982:tid 140283267127168] AH00046: child process 5986 still did not exit, sending a SIGKILL
+[Sun Sep 25 14:42:06.919339 2016] [mpm_event:notice] [pid 5982:tid 140283267127168] AH00491: caught SIGTERM, shutting down
+[Sun Sep 25 14:42:07.642476 2016] [mpm_event:notice] [pid 6190:tid 139706631980928] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Sun Sep 25 14:42:07.642549 2016] [core:notice] [pid 6190:tid 139706631980928] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Sep 25 14:42:10.592594 2016] [:info] [pid 6194:tid 139706505082624] [client 88.190.58.150:54645] mod_wsgi (pid=6194, process='', application='ec2-52-57-15-38.eu-central-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/myapp.wsgi'.
+[Sun Sep 25 14:42:10.927462 2016] [:info] [pid 6193:tid 139706343839488] [client 88.190.58.150:54647] mod_wsgi (pid=6193, process='', application='ec2-52-57-15-38.eu-central-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/myapp.wsgi'., referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/
+[Sun Sep 25 14:46:53.675436 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767] mod_wsgi (pid=6193): Exception occurred processing WSGI script '/var/www/myapp.wsgi'., referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675472 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767] Traceback (most recent call last):, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675487 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675886 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     return self.wsgi_app(environ, start_response), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675900 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675924 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     response = self.make_response(self.handle_exception(e)), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675931 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675939 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     reraise(exc_type, exc_value, tb), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675944 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675951 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     response = self.full_dispatch_request(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675957 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675964 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     rv = self.handle_user_exception(e), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675969 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675976 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     reraise(exc_type, exc_value, tb), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675980 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675987 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     rv = self.dispatch_request(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675992 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.675999 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676004 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/var/www/ItemCatalog/finalProject.py", line 71, in decorated_function, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676175 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     return f(*args, **kwargs), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676187 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/var/www/ItemCatalog/finalProject.py", line 505, in newSingleReport, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676202 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     session.commit(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676208 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676619 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     self.transaction.commit(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676630 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676642 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     self._prepare_impl(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676647 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676654 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     self.session.flush(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676659 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676666 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     self._flush(objects), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676671 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676678 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     transaction.rollback(_capture_exception=True), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676683 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676871 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     compat.reraise(exc_type, exc_value, exc_tb), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676881 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676892 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     flush_context.execute(), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.676897 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677025 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     rec.execute(self), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677039 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677051 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     uow, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677056 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 64, in save_obj, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677257 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     table, insert), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677267 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 569, in _emit_insert_statements, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677278 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     execute(statement, params), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677284 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677585 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     params), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677595 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677606 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     compiled_sql, distilled_params, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677611 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677619 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     context), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677624 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677631 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     exc_info, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677636 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 196, in raise_from_cause, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677684 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     reraise(type(exception), exception, tb=exc_tb), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677691 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677705 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     context), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677710 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]   File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677870 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]     cursor.execute(statement, parameters), referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677932 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767] DataError: (DataError) invalid input syntax for integer: "", referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677937 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767] LINE 1: ..., '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''..., referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677939 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]                                                              ^, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
+[Sun Sep 25 14:46:53.677943 2016] [:error] [pid 6193:tid 139706410981120] [client 88.190.58.150:54767]  'INSERT INTO report (site_name, site_full_adress, site_adress_number, site_adress_street, site_adress_postcode, site_adress_city, site_administrative_area, site_adress_country, "site_ERPcategory", "site_ERPtype", client_lastname, client_firstname, client_full_adress, client_adress_number, client_adress_street, client_adress_postcode, client_adress_city, client_administrative_area, client_adress_country, client_phone, client_mail, report_number, "report_visitDate", "report_redactionDate", report_picture, "report_pictureOrientation", editor_lastname, editor_firstname, editor_full_adress, editor_adress_number, editor_adress_street, editor_adress_postcode, editor_adress_city, editor_administrative_area, editor_adress_country, editor_phone, editor_mail, frame_choice, user_id) VALUES (%(site_name)s, %(site_full_adress)s, %(site_adress_number)s, %(site_adress_street)s, %(site_adress_postcode)s, %(site_adress_city)s, %(site_administrative_area)s, %(site_adress_country)s, %(site_ERPcategory)s, %(site_ERPtype)s, %(client_lastname)s, %(client_firstname)s, %(client_full_adress)s, %(client_adress_number)s, %(client_adress_street)s, %(client_adress_postcode)s, %(client_adress_city)s, %(client_administrative_area)s, %(client_adress_country)s, %(client_phone)s, %(client_mail)s, %(report_number)s, %(report_visitDate)s, %(report_redactionDate)s, %(report_picture)s, %(report_pictureOrientation)s, %(editor_lastname)s, %(editor_firstname)s, %(editor_full_adress)s, %(editor_adress_number)s, %(editor_adress_street)s, %(editor_adress_postcode)s, %(editor_adress_city)s, %(editor_administrative_area)s, %(editor_adress_country)s, %(editor_phone)s, %(editor_mail)s, %(frame_choice)s, %(user_id)s) RETURNING report.id' {'site_name': u'', 'report_number': u'', 'editor_full_adress': u'', 'editor_adress_street': u'', 'client_lastname': u'', 'site_ERPtype': u'', 'client_phone': u'', 'editor_adress_city': u'', 'editor_administrative_area': u'', 'client_firstname': u'', 'user_id': 2, 'report_redactionDate': u'', 'client_full_adress': u'', 'report_visitDate': u'', 'client_adress_city': u'', 'site_adress_number': u'', 'client_adress_country': u'', 'editor_adress_postcode': u'', 'client_adress_number': u'', 'site_adress_country': u'', 'editor_phone': u'', 'editor_mail': u'', 'client_adress_street': u'', 'editor_adress_number': u'', 'editor_adress_country': u'', 'site_adress_postcode': u'', 'site_administrative_area': u'', 'report_pictureOrientation': 'None', 'site_adress_city': u'', 'report_picture': 'undefined.jpg', 'editor_lastname': u'', 'client_adress_postcode': u'', 'site_ERPcategory': u'', 'client_administrative_area': u'', 'site_adress_street': u'', 'client_mail': u'', 'site_full_adress': u'', 'editor_firstname': u'', 'frame_choice': None}, referer: http://ec2-52-57-87-239.eu-central-1.compute.amazonaws.com/reports/new?
