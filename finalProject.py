@@ -415,7 +415,7 @@ def showAllReportsJSON():
 @app.route('/reports/<int:report_id>/report')
 def showSingleReport(report_id):
     report = session.query(Report).filter_by(id=report_id).one()
-    if report.frame_choice is not 0:
+    if not report.frame_choice:
         frame = session.query(Frame).filter_by(id=report.frame_choice).one()
         return render_template('showsinglereport.html',
                                report=frame,
