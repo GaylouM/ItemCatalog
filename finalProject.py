@@ -20,6 +20,8 @@ from flask import make_response
 import requests
 
 app = Flask(__name__)
+app.secret_key = 'super_secret_key'
+app.debug = True
 
 # This is the path to the upload directory
 app.config['UPLOAD_FOLDER'] = '/var/www/ItemCatalog/static/uploads'
@@ -38,7 +40,7 @@ CLIENT_ID = json.loads(
     open('var/www/ItemCatalog/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Report creator"
 
-engine = create_engine('sqlite:///var/www/ItemCatalog/affairreportwithusers.db')
+engine = create_engine('postgresql://catalog:db-password@localhost/catalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -735,8 +737,7 @@ def deleteSingleReport(report_id):
 
 if __name__ == '__main__':
 
-    app.secret_key = 'super_secret_key'
-    app.run(host='0.0.0.0', port=5000)
+    app.run()
 
 #--------------------------------------------------------
 #--------------------End of app--------------------------
