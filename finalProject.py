@@ -720,8 +720,8 @@ def deleteSingleReport(report_id):
     reportToDelete = session.query(Report).filter_by(id=report_id).one()
     filename = reportToDelete.report_picture
     if request.method == 'POST':
-        # if not filename == 'undefined.jpg':
-        #     os.remove("%s%s" % (upload_folder, filename))
+        if not filename == 'undefined.jpg':
+            os.remove("%s%s" % (upload_folder, filename))
         session.delete(reportToDelete)
         session.commit()
         flash("report was deleted !")
