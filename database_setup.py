@@ -135,7 +135,7 @@ class Report(Base):
 
 #engine = create_engine('sqlite:///affairreport.db')
 
-engine = create_engine('sqlite:///affairreportwithusers.db')
+engine = create_engine('postgresql://catalog:db-password@localhost/catalog')
 
 
 Base.metadata.create_all(engine)
