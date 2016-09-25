@@ -23,6 +23,8 @@ app = Flask(__name__)
 app.secret_key = 'super_secret_key'
 app.debug = True
 
+upload_folder = '/var/www/ItemCatalog/static/uploads/'
+
 # This is the path to the upload directory
 app.config['UPLOAD_FOLDER'] = '/var/www/ItemCatalog/static/uploads'
 # These are the extension that we are accepting to be uploaded
@@ -230,7 +232,7 @@ def uploads(uploaded_files):
             # folder we setup
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # Open image file for reading (binary mode)
-            f = open("static/uploads/%s" % filename, 'rb')
+            f = open("%s%s" % (upload_folder, filename), 'rb')
 
             # Read Exif tags
             tags = exifread.process_file(f, details=False, strict=True)
@@ -718,7 +720,7 @@ def deleteSingleReport(report_id):
     reportToDelete = session.query(Report).filter_by(id=report_id).one()
     filename = reportToDelete.report_picture
     if request.method == 'POST':
-        os.remove("static/uploads/%s" % filename)
+        os.remove("%s%s" % (upload_folder, filename))
         session.delete(reportToDelete)
         session.commit()
         flash("report was deleted !")
