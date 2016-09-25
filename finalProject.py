@@ -495,7 +495,7 @@ def newSingleReport():
                 report_number=request.form['report_number'],
                 report_visitDate=request.form['report_visitDate'],
                 report_redactionDate=request.form['report_redactionDate'],
-                report_picture=choosenPicture,
+                frame_choice=0, report_picture=choosenPicture,
                 report_pictureOrientation=meta_orientation,
                 user_id=login_session['user_id']
             )
